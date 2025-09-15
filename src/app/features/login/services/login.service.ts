@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { SPOTIFY_AUTH_URL } from '../../../constants';
-import { AuthToken } from '../../../core/domain/auth.model';
+import { AuthToken } from '../../../core/domain/auth/auth-token.';
 import { LoginCommand } from '../types/login.model';
 
 @Injectable({

@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { FormGroup, NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { AuthToken } from '../../core/domain/auth.model';
+import { AuthToken } from '../../core/domain/auth/auth-token.';
 import { AuthService } from '../../core/services/auth.service';
 import { LoginService } from './services/login.service';
 import { LoginForm } from './types/login.model';

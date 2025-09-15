@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { BehaviorSubject, startWith } from 'rxjs';
-import { AuthToken } from '../domain/auth.model';
+import { AuthToken } from '../domain/auth/auth-token.';
 import { CookieService } from './cookie.service';
 
 @Injectable({
