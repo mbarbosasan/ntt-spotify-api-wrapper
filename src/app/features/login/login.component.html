@@ -1,0 +1,9 @@
+<div class="login-form-container">
+  <form [formGroup]="form" (ngSubmit)="login(form)" class="form">
+    <label for="clientId" class="label">Client ID:</label>
+    <input type="text" name="clientId" id="clientId" class="input" formControlName="clientId">
+    <label for="clientSecret" class="label">Client Secret:</label>
+    <input type="password" name="clientSecret" id="clientSecret" class="input" formControlName="clientSecret">
+    <button class="button">Login</button>
+  </form>
+</div>
