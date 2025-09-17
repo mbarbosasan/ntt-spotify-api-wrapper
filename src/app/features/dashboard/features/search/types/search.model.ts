@@ -1,25 +1,32 @@
-export type SearchType = 'artist' | 'album' | 'track' | 'playlist' | 'show' | 'episode';
+export type SearchType =
+  | 'artist'
+  | 'album'
+  | 'track'
+  | 'playlist'
+  | 'show'
+  | 'episode';
 
-type baseSearchResult = {
+export type BaseSearchResult<T> = {
   href: string;
   limit: number;
   next: string | null;
   offset: number;
   previous: string | null;
   total: number;
-}
+  items: Array<T>;
+};
 
 type ImageObject = {
   url: string;
   height: string | null;
   width: string | null;
-}
+};
 
 type RestrictionObject = {
   reason: 'market' | 'product' | 'explicit';
-}
+};
 
-type TracksSearchResult = {
+export type TrackSearchResult = {
   album: {
     album_type: string;
     total_tracks: number;
@@ -29,34 +36,34 @@ type TracksSearchResult = {
     name: string;
     release_date: string;
     restrictions: RestrictionObject;
-  },
-  artists: {
-    external_urls: { 
-      spotify: string
+  };
+  artists: Array<{
+    external_urls: {
+      spotify: string;
     };
     href: string;
     id: string;
     name: string;
     type: 'artist';
     uri: string;
-  },
+  }>;
   external_urls: {
-    spotify: string
-  },
+    spotify: string;
+  };
   href: string;
   id: string;
   name: string;
   type: 'track';
   restrictions: RestrictionObject;
-}
+};
 
-type ArtistSearchResult = {
+export type ArtistSearchResult = {
   external_urls: {
-    spotify: string
-  },
+    spotify: string;
+  };
   followers: {
-    total: number
-  },
+    total: number;
+  };
   genres: string[];
   id: string;
   images: ImageObject[];
@@ -64,14 +71,14 @@ type ArtistSearchResult = {
   popularity: number;
   type: 'artist';
   uri: string;
-}
+};
 
-type AlbumsSearchResult = {
-  album_type: "album" | "single" | "compilation";
+export type AlbumSearchResult = {
+  album_type: 'album' | 'single' | 'compilation';
   total_tracks: number;
   external_urls: {
-    spotify: string
-  },
+    spotify: string;
+  };
   href: string;
   id: string;
   images: ImageObject[];
@@ -81,40 +88,40 @@ type AlbumsSearchResult = {
   type: 'album';
   uri: string;
   artists: ArtistSearchResult[];
-}
+};
 
-type PlaylistSearchResult = {
+export type PlaylistSearchResult = {
   collaborative: boolean;
   description: string;
   external_urls: {
-    spotify: string
-  },
+    spotify: string;
+  };
   href: string;
   id: string;
   images: ImageObject[];
   name: string;
   owner: {
     display_name: string;
-  },
+  };
   public: boolean;
   snapshot_id: string;
   tracks: {
     href: string;
     total: number;
-  },
+  };
   type: 'playlist';
   uri: string;
-}
+};
 
-type EpisodeSearchResult = {
+export type EpisodeSearchResult = {
   audio_preview_url: string | null;
   descrpition: string;
   html_description: string;
   duration_ms: number;
   explicit: boolean;
   external_urls: {
-    spotify: string
-  },
+    spotify: string;
+  };
   href: string;
   id: string;
   images: ImageObject[];
@@ -124,14 +131,14 @@ type EpisodeSearchResult = {
   type: 'episode';
   uri: string;
   restrictions: RestrictionObject;
-}
+};
 
-type ShowsSearchResult = {
+export type ShowSearchResult = {
   description: string;
   html_description: string;
   explicit: boolean;
   external_urls: {
-    spotify: string
+    spotify: string;
   };
   href: string;
   id: string;
@@ -142,13 +149,22 @@ type ShowsSearchResult = {
   type: 'show';
   uri: string;
   total_episodes: number;
-}
+};
 
 export type SearchResult = {
-  artists?: baseSearchResult & { items: ArtistSearchResult[] };
-  albums?: baseSearchResult & { items: AlbumsSearchResult[] };
-  tracks?: baseSearchResult & { items: TracksSearchResult[] };
-  playlists?: baseSearchResult & { items: PlaylistSearchResult[] };
-  shows?: baseSearchResult & { items: ShowsSearchResult[] };
-  episodes?: baseSearchResult & { items: EpisodeSearchResult[] };
+  artists?: BaseSearchResult<ArtistSearchResult>;
+  albums?: BaseSearchResult<AlbumSearchResult>;
+  tracks?: BaseSearchResult<TrackSearchResult>;
+  playlists?: BaseSearchResult<PlaylistSearchResult>;
+  shows?: BaseSearchResult<ShowSearchResult>;
+  episodes?: BaseSearchResult<EpisodeSearchResult>;
+};
+
+export function isTracksSearchResult(result: any): result is TrackSearchResult {
+  return (
+    result &&
+    Array.isArray(result.items) &&
+    result.items.length > 0 &&
+    'album' in result.items[0]
+  );
 }

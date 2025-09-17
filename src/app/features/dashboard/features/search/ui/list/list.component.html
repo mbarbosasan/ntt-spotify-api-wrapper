@@ -1,0 +1,8 @@
+<h1>{{title()}}</h1>
+<ul class="card list-container">
+  @for (item of list().items; track $index) {
+    @if (item?.type && item.type === 'track') {
+      <app-track-item [track]="item"></app-track-item>
+    }
+  }
+</ul>

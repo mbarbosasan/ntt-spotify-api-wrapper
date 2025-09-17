@@ -24,18 +24,10 @@
 </div>
 <ng-container *ngIf="(results$ | async) as results">
   <section *ngFor="let entry of results | keyvalue">
-    <ul>
-      <h2>{{ entry.key }}</h2>
-      <ng-container *ngIf="entry.value?.items; else noResultsFound">
-        @for (item of entry.value?.items; track $index) {
-          <li>
-            {{ item?.name }}
-          </li>
-        }
-      </ng-container>
-      <ng-template #noResultsFound>
-        <p>Nenhum resultado encontrado</p>
-      </ng-template>
-    </ul>
+  @if (entry.value) {
+    <app-list [title]="entry.key" [list]="entry.value!"></app-list>
+  } @else {
+    <p>Nenhum resultado para {{entry.key}}</p>
+  }
   </section>
 </ng-container>

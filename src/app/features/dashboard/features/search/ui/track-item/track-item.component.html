@@ -1,0 +1,11 @@
+<li class="item-card">
+  <div class="album-image">
+    <img [ngSrc]="track().album.images[0].url" [height]="track().album.images[0].height" [width]="track().album.images[0].width" />
+  </div>
+  <div>
+    <p>{{ track().name}}</p>
+    <p>
+      <span>{{ track().type }} • {{track().artists[0].name}}</span>
+    </p>
+  </div>
+</li>

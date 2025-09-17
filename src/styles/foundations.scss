@@ -62,3 +62,22 @@ body {
 .rounded {
   border-radius: $border-radius;
 }
+
+.card {
+  background-color: $color-dark-gray;
+  border-radius: $border-radius;
+  box-shadow: $shadow-md;
+  padding: $spacing-md;
+}
+
+.list-container {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+}
+.list-item {
+  padding: $spacing-md;
+  height: 60px;
+  display: flex;
+  align-items: center;
+}

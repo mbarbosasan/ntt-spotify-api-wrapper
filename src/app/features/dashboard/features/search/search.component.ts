@@ -14,11 +14,18 @@ import {
 import { filter, Subject, switchMap, throttleTime } from 'rxjs';
 import { SearchService } from './services/search.service';
 import { SearchType } from './types/search.model';
+import { ListComponent } from './ui/list/list.component';
 
 @Component({
   selector: 'app-search',
   standalone: true,
-  imports: [ReactiveFormsModule, AsyncPipe, CommonModule, KeyValuePipe],
+  imports: [
+    ReactiveFormsModule,
+    AsyncPipe,
+    CommonModule,
+    KeyValuePipe,
+    ListComponent,
+  ],
   templateUrl: './search.component.html',
   styleUrl: './search.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -26,8 +33,6 @@ import { SearchType } from './types/search.model';
 export class SearchComponent implements OnInit {
   private readonly searchService = inject(SearchService);
   private readonly fb = inject(NonNullableFormBuilder);
-
-  triggerSearch = new Subject();
 
   form = this.fb.group({
     types: this.fb.array<FormControl<SearchType>>([
@@ -41,6 +46,7 @@ export class SearchComponent implements OnInit {
     search: this.fb.control('', [Validators.minLength(2)]),
   });
 
+  triggerSearch = new Subject();
   results$ = this.triggerSearch.pipe(
     filter(() => this.form.valid),
     // Inserindo um tempo fixo para evitar que o usuário realize muitas requisições em um curto período de tempo e receba um rate limit;
