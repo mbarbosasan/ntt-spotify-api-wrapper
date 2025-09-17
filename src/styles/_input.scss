@@ -6,26 +6,18 @@ input.input-sm,
 input.input-lg {
   width: 100%;
   padding: 0.75em 1em;
-  border: 1px solid foundation.$color-dark-gray;
-  border-radius: foundation.$border-radius;
-  background: foundation.$color-dark-gray;
-  color: foundation.$color-white;
+  border: 1px solid foundation.$color-accent-content;
+  border-radius: foundation.$radius-box;
+  background-color: foundation.$color-base-100;
+  color: foundation.$color-primary-content;
   font-size: foundation.$font-size-base;
   transition: border-color 0.2s, box-shadow 0.2s;
 
-  &:focus {
-    border-color: foundation.$color-green;
-    outline: none;
-    box-shadow: 0 0 0 2px rgba(30,185,84,0.2);
-  }
-
-  &::placeholder {
-    color: foundation.$color-light-gray;
-    opacity: 1;
+  &:hover {
+    background-color: darken(foundation.$color-base-200, 10%);
   }
 }
 
-// Tamanhos
 input.input-sm {
   padding: 0.5em 0.75em;
   font-size: foundation.$font-size-sm;

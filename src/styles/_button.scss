@@ -2,10 +2,10 @@
 
 .button {
   padding: 0.75em 2em;
-  border: none;
-  border-radius: foundation.$border-radius;
-  background-color: foundation.$color-green;
-  color: foundation.$color-white;
+  border: solid 0.5px foundation.$color-base-300;
+  border-radius: foundation.$radius-box;
+  background-color: foundation.$color-primary;
+  color: foundation.$color-primary-content;
   font-size: 1rem;
   font-weight: foundation.$font-weight-bold;
   cursor: pointer;
@@ -13,13 +13,6 @@
 
   &:hover,
   &:focus {
-    background-color: lighten(foundation.$color-green, 5%);
-    color: foundation.$color-black;
-    box-shadow: 0 2px 8px rgba(30,185,84,0.15);
-    outline: none;
-  }
-
-  &:active {
-    background-color: darken(foundation.$color-green, 5%);
+    background-color: darken(foundation.$color-base-200, 10%);
   }
 }

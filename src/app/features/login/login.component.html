@@ -1,9 +1,10 @@
-<div class="login-form-container">
+<div class="login-form-container bg-secondary">
   <form [formGroup]="form" (ngSubmit)="login(form)" class="form">
+    <h1>Login</h1>
     <label for="clientId" class="label">Client ID</label>
-    <input type="text" name="clientId" id="clientId" class="input-sm" formControlName="clientId">
+    <input type="text" name="clientId" id="clientId" class="input" placeholder="98192jh8he1" formControlName="clientId">
     <label for="clientSecret" class="label">Client Secret</label>
-    <input type="password" name="clientSecret" id="clientSecret" class="input-sm" formControlName="clientSecret">
+    <input type="password" name="clientSecret" id="clientSecret" class="input" placeholder="***********" formControlName="clientSecret">
     <button class="button">Login</button>
   </form>
 </div>

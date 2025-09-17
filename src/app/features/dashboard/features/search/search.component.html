@@ -1,5 +1,7 @@
 <div class="search-container">
-  <h1>Busque por seus artistas, músicas ou albuns preferidos!</h1>
+  <h1 class="text-primary font-base">Busque por seus 
+    <span class="font-bold"> artistas, músicas ou albuns preferidos!</span>
+  </h1>
   <form [formGroup]="form" (ngSubmit)="triggerSearch.next(null)" class="form">
     <div class="input-search-group">
       <input type="text" class="input" id="search" placeholder='Tente "Arctic Monkeys"' formControlName="search" />
