@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { BehaviorSubject, startWith } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { AuthToken } from '../domain/auth/auth-token.';
 import { CookieService } from './cookie.service';
 
@@ -9,18 +9,14 @@ import { CookieService } from './cookie.service';
 export class AuthService {
   private readonly token = new BehaviorSubject<AuthToken | null>(null);
   private readonly cookieService = inject(CookieService);
-  token$ = this.token
-    .asObservable()
-    .pipe(
-      startWith(AuthToken.fromJson(this.cookieService.get('Authorization')))
-    );
+  token$ = this.token.asObservable();
 
   updateToken(token: AuthToken) {
     this.token.next(token);
     this.cookieService.set(
       'Authorization',
       JSON.stringify(token),
-      token.expires_in / 3600
+      token.should_expire_at
     );
   }
 }
