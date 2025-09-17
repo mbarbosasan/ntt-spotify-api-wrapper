@@ -1,10 +1,19 @@
-<div class="login-form-container bg-secondary">
-  <form [formGroup]="form" (ngSubmit)="login(form)" class="form">
-    <h1>Login</h1>
-    <label for="clientId" class="label">Client ID</label>
-    <input type="text" name="clientId" id="clientId" class="input" placeholder="98192jh8he1" formControlName="clientId">
-    <label for="clientSecret" class="label">Client Secret</label>
-    <input type="password" name="clientSecret" id="clientSecret" class="input" placeholder="***********" formControlName="clientSecret">
-    <button class="button">Login</button>
-  </form>
+<div class="container">
+  <div class="login-form-container">
+    <h1 class="text-center">Spotify Wrapper API</h1>
+    <form [formGroup]="form" (ngSubmit)="login(form)" class="card form">
+      <p class="text-primary font-bold text-xl">Login</p>
+      <p class="text-primary">Você precisará do Client ID e Client Secret do seu app Spotify.</p>
+      <div>
+        <label for="clientId" class="label" class="label">Client ID</label>
+        <input type="text" name="clientId" id="clientId" class="input" placeholder="98192jh8he1" formControlName="clientId">
+      </div>
+      <div>
+        <label for="clientSecret" class="label">Client Secret</label>
+        <input type="password" name="clientSecret" id="clientSecret" class="input" placeholder="***********" formControlName="clientSecret">
+      </div>
+      <button class="button">Login</button>
+    </form>
+    <p>Não tem as credenciais? <a href="https://developer.spotify.com/documentation/web-api/tutorials/getting-started">Siga a documentação para gerar uma.</a></p>
+  </div>
 </div>
