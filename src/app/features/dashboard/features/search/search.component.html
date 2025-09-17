@@ -1,0 +1,41 @@
+<div class="search-container">
+  <h1>Busque por seus artistas, músicas ou albuns preferidos!</h1>
+  <form [formGroup]="form" (ngSubmit)="triggerSearch.next(null)" class="form">
+    <div class="input-search-group">
+      <input type="text" class="input" id="search" placeholder='Tente "Arctic Monkeys"' formControlName="search" />
+      <button class="button">Buscar</button>
+    </div>
+    <section class="type-search-group">
+      <ng-container *ngFor="let control of typesFormArray.controls; let i = index" formGroupName="types">
+        <label [for]="control.value">
+          <input
+            type="checkbox"
+            [id]="control.value"
+            [attr.label]="'Buscar por ' + control.value"
+            [value]="control.value"
+            class="checkbox"
+            [formArrayName]="i"
+          />
+          {{control.value }}
+        </label>
+      </ng-container>
+    </section>
+  </form>
+</div>
+<ng-container *ngIf="(results$ | async) as results">
+  <section *ngFor="let entry of results | keyvalue">
+    <ul>
+      <h2>{{ entry.key }}</h2>
+      <ng-container *ngIf="entry.value?.items; else noResultsFound">
+        @for (item of entry.value?.items; track $index) {
+          <li>
+            {{ item?.name }}
+          </li>
+        }
+      </ng-container>
+      <ng-template #noResultsFound>
+        <p>Nenhum resultado encontrado</p>
+      </ng-template>
+    </ul>
+  </section>
+</ng-container>

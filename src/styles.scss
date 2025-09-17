@@ -1,4 +1,4 @@
-* {
-  padding: 0px;
-  margin: 0px;
-}
+@use "./styles/foundations.scss";
+@use "./styles/input.scss";
+@use "./styles/button.scss";
+@use "./styles/checkbox.scss";

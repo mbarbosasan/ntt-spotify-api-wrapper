@@ -1,0 +1,45 @@
+@use './foundations.scss' as foundation;
+
+.checkbox,
+input[type="checkbox"].checkbox,
+input[type="checkbox"].checkbox-sm,
+input[type="checkbox"].checkbox-lg {
+  accent-color: foundation.$color-green;
+  border-radius: 4px;
+  border: 2px solid foundation.$color-dark-gray;
+  background: foundation.$color-dark-gray;
+  cursor: pointer;
+  transition: border-color 0.2s, box-shadow 0.2s;
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(30,185,84,0.2);
+    border-color: foundation.$color-green;
+  }
+}
+
+// Tamanhos
+input[type="checkbox"].checkbox,
+input[type="checkbox"].checkbox-md {
+  width: 1.1em;
+  height: 1.1em;
+}
+
+input[type="checkbox"].checkbox-sm {
+  width: 0.9em;
+  height: 0.9em;
+}
+
+input[type="checkbox"].checkbox-lg {
+  width: 1.4em;
+  height: 1.4em;
+}
+
+label {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  font-weight: foundation.$font-weight-normal;
+  color: foundation.$color-white;
+  cursor: pointer;
+}
