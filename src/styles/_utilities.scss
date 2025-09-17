@@ -1,0 +1,74 @@
+@use "./foundations.scss" as *;
+
+.text-primary {
+  color: $text-color;
+}
+
+.text-accent {
+  color: $color-accent;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-sm {
+  font-size: $spacing-xs;
+}
+
+.text-base {
+  font-size: $spacing-md;
+}
+
+.text-xl {
+  font-size: $spacing-lg;
+}
+
+.text-2xl {
+  font-size: $spacing-xl;
+}
+
+.font-bold {
+  font-weight: $font-weight-bold;
+}
+
+.font-extrabold {
+  font-weight: $font-weight-extrabold;
+}
+
+.font-base {
+  font-weight: $font-weight-normal;
+}
+
+.bg-primary {
+  background-color: $color-base;
+}
+
+.bg-secondary {
+  background-color: $color-secondary;
+}
+
+.bg-accent {
+  background: $color-accent;
+}
+
+.px-md { padding-left: $spacing-md; padding-right: $spacing-md; }
+.py-md { padding-top: $spacing-md; padding-bottom: $spacing-md; }
+.mt-lg { margin-top: $spacing-lg; }
+.mb-lg { margin-bottom: $spacing-lg; }
+
+.rounded {
+  border-radius: $radius-box;
+}
+
+.card {
+  border-radius: $radius-box;
+  box-shadow: $shadow-md;
+  padding: $spacing-md;
+  background-color: $color-secondary;
+}
+
+.label {
+  color: $text-color;
+  font-weight: 500;
+}

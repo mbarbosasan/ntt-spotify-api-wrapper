@@ -1,18 +1,14 @@
-$color-base-100: rgb(37, 36, 41);
-$color-base-200: rgb(56, 54, 62);
-$color-base-300: rgb(73, 71, 81);
-$color-base-content: rgb(247, 247, 247);
-$color-primary: rgb(0, 0, 0);
-$color-primary-content: rgb(252, 252, 255);
-$color-secondary: rgb(252, 252, 255);
-$color-secondary-content: rgb(106, 105, 108);
-$color-accent: rgb(181, 255, 128);
-$color-accent-content: rgb(37, 37, 37);
+$color-primary: #00ab75;
+$color-base: #FFFFFF;
+$color-secondary: #f0f6fe;
+$text-color:#6e747c;
+
+$color-accent: #00ab75;
 $color-neutral: rgb(73, 71, 81);
 $color-neutral-content: rgb(252, 252, 252);
 $color-info: rgb(92, 92, 255);
 $color-info-content: rgb(248, 248, 255);
-$color-success: rgb(108, 255, 128);
+$color-success: #00ab75;
 $color-success-content: rgb(252, 255, 252);
 $color-warning: rgb(255, 217, 128);
 $color-warning-content: rgb(255, 255, 252);
@@ -33,7 +29,7 @@ $spacing-lg: 24px;
 $spacing-xl: 32px;
 
 
-$primary-font: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+$primary-font: 'Inter', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
 $font-size-sm: 14px;
 $font-size-base: 16px;
 $font-size-lg: 20px;
@@ -51,60 +47,17 @@ $shadow-md: 0 2px 8px rgba(0,0,0,0.15);
 
 body {
   font-family: $primary-font;
-  background-color: $color-primary;
-  color: $color-base-content;
+  background-color: $color-base;
+  color: $text-color;
   font-size: $font-size-base;
   line-height: 1.6;
   min-height: 100vh;
 }
 
-.text-primary {
-  color: $color-base-content;
-}
-.text-secondary {
-  color: $color-base-100;
+li {
+  list-style: none;
 }
 
-.text-accent {
-  color: $color-accent-content;
-}
-
-.font-bold {
-  font-weight: $font-weight-bold;
-}
-
-.font-extrabold {
-  font-weight: $font-weight-extrabold;
-}
-
-.font-base {
-  font-weight: $font-weight-normal;
-}
-
-.bg-primary {
-  background-color: $color-primary-content;
-}
-
-.bg-secondary {
-  background-color: $color-secondary-content;
-}
-
-.bg-accent {
-  background: $color-accent;
-}
-
-.px-md { padding-left: $spacing-md; padding-right: $spacing-md; }
-.py-md { padding-top: $spacing-md; padding-bottom: $spacing-md; }
-.mt-lg { margin-top: $spacing-lg; }
-.mb-lg { margin-bottom: $spacing-lg; }
-
-.rounded {
-  border-radius: $radius-box;
-}
-
-.card {
-  border-radius: $radius-box;
-  box-shadow: $shadow-md;
-  padding: $spacing-md;
-  background-color: $color-base-100;
+a {
+  color: $color-accent;
 }

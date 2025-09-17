@@ -4,7 +4,7 @@
 input[type="checkbox"].checkbox,
 input[type="checkbox"].checkbox-sm,
 input[type="checkbox"].checkbox-lg {
-  accent-color: foundation.$color-base-200;
+  accent-color: foundation.$color-accent;
   border-radius: 4px;
   border: 2px solid foundation.$color-accent;
   background: foundation.$color-primary;
@@ -33,13 +33,4 @@ input[type="checkbox"].checkbox-sm {
 input[type="checkbox"].checkbox-lg {
   width: 1.4em;
   height: 1.4em;
-}
-
-label {
-  display: flex;
-  align-items: center;
-  gap: 0.5em;
-  font-weight: foundation.$font-weight-normal;
-  color: foundation.$color-primary-content;
-  cursor: pointer;
 }
