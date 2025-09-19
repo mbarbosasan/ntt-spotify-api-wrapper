@@ -6,13 +6,13 @@
       <p class="text-primary">Você precisará do Client ID e Client Secret do seu app Spotify.</p>
       <div>
         <label for="clientId" class="label" class="label">Client ID</label>
-        <input type="text" name="clientId" id="clientId" class="input" placeholder="98192jh8he1" formControlName="clientId">
+        <app-input type="text" name="clientId" inputId="clientId" placeholder="98192jh8he1" formControlName="clientId" />
       </div>
       <div>
         <label for="clientSecret" class="label">Client Secret</label>
-        <input type="password" name="clientSecret" id="clientSecret" class="input" placeholder="***********" formControlName="clientSecret">
+        <app-input type="text" name="clientSecret" inputId="clientSecret" placeholder="***********" formControlName="clientSecret" />
       </div>
-      <button class="button">Login</button>
+      <app-button type="submit" label="Login" />
     </form>
     <p>Não tem as credenciais? <a href="https://developer.spotify.com/documentation/web-api/tutorials/getting-started">Siga a documentação para gerar uma.</a></p>
   </div>

@@ -1,4 +1,8 @@
-@use './foundations.scss' as foundation;
+@use '../../../../styles/foundations.scss' as foundation;
+
+:host {
+  width: 100%;
+}
 
 .input,
 input.input,

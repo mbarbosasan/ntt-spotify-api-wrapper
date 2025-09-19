@@ -160,6 +160,14 @@ export type SearchResult = {
   episodes?: BaseSearchResult<EpisodeSearchResult>;
 };
 
+export type CommonItemSearch = {
+  name: string;
+  image: ImageObject | null;
+  author: string;
+  id: string;
+  type: SearchType;
+};
+
 export function isTracksSearchResult(result: any): result is TrackSearchResult {
   return (
     result &&
@@ -167,4 +175,82 @@ export function isTracksSearchResult(result: any): result is TrackSearchResult {
     result.items.length > 0 &&
     'album' in result.items[0]
   );
+}
+
+export function toCommonItemSearch(result: SearchResult): CommonItemSearch[] {
+  const items: CommonItemSearch[] = [];
+
+  if (result.artists) {
+    items.push(
+      ...result.artists.items.map((artist) => ({
+        name: artist.name,
+        image: artist.images[0],
+        author: artist.name,
+        id: artist.id,
+        type: 'artist' as SearchType,
+      }))
+    );
+  }
+
+  if (result.albums) {
+    items.push(
+      ...result.albums.items.map((album) => ({
+        name: album.name,
+        image: album.images[0],
+        author: album.artists.map((a) => a.name).join(', '),
+        id: album.id,
+        type: 'album' as SearchType,
+      }))
+    );
+  }
+
+  if (result.tracks) {
+    items.push(
+      ...result.tracks.items.map((track) => ({
+        name: track.name,
+        image: track.album.images[0],
+        author: track.artists.map((a) => a.name).join(', '),
+        id: track.id,
+        type: 'track' as SearchType,
+      }))
+    );
+  }
+
+  if (result.playlists) {
+    items.push(
+      ...result.playlists.items.map((playlist) => ({
+        name: playlist.name,
+        image: playlist.images[0],
+        author: playlist.owner.display_name,
+        id: playlist.id,
+        type: 'playlist' as SearchType,
+      }))
+    );
+  }
+
+  if (result.shows) {
+    items.push(
+      ...result.shows.items.map((show) => ({
+        name: show.name,
+        image: show.images[0],
+        author: show.publisher,
+        id: show.id,
+        type: 'show' as SearchType,
+      }))
+    );
+  }
+
+  if (result.episodes) {
+    items.push(
+      ...result.episodes.items.map((episode) => ({
+        name: episode.name,
+        image: episode.images[0],
+        author: episode.language,
+        id: episode.id,
+        type: 'episode' as SearchType,
+      }))
+    );
+  }
+
+  return items;
 }

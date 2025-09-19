@@ -1,4 +1,4 @@
-@use "./foundations.scss" as *;
+@use "foundations" as *;
 
 .text-primary {
   color: $text-color;
@@ -8,24 +8,32 @@
   color: $color-accent;
 }
 
+.text-error {
+  color: $color-error;
+}
+
 .text-center {
   text-align: center;
 }
 
 .text-sm {
-  font-size: $spacing-xs;
+  font-size: $font-size-sm;
 }
 
 .text-base {
-  font-size: $spacing-md;
+  font-size: $font-size-base;
 }
 
 .text-xl {
-  font-size: $spacing-lg;
+  font-size: $font-size-lg;
 }
 
 .text-2xl {
-  font-size: $spacing-xl;
+  font-size: $font-size-xl;
+}
+
+.font-light {
+  font-weight: $font-weight-light;
 }
 
 .font-bold {

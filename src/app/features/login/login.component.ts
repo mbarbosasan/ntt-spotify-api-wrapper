@@ -3,13 +3,15 @@ import { FormGroup, NonNullableFormBuilder, ReactiveFormsModule, Validators } fr
 import { Router } from '@angular/router';
 import { AuthToken } from '../../core/domain/auth/auth-token.';
 import { AuthService } from '../../core/services/auth.service';
+import { ButtonComponent } from '../../core/ui/button/button.component';
+import { InputComponent } from '../../core/ui/input/input.component';
 import { LoginService } from './services/login.service';
 import { LoginForm } from './types/login.model';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, InputComponent, ButtonComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

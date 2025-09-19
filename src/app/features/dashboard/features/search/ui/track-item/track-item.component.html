@@ -1,11 +1,15 @@
 <li class="item-card">
   <div class="album-image">
-    <img [ngSrc]="track().album.images[0].url" [height]="track().album.images[0].height" [width]="track().album.images[0].width" />
+    @if (track().image) {
+      <img [ngSrc]="track().image?.url || ''" [width]="track().image?.width || 60" [height]="track().image?.height || 60" />
+    } @else {
+      <img src="" alt="" width="60" height="60">
+    }
   </div>
   <div>
-    <p>{{ track().name}}</p>
+    <p class="font-bold">{{ track().name}}</p>
     <p>
-      <span>{{ track().type }} • {{track().artists[0].name}}</span>
+      <span>{{ track().type }} • {{track().author}}</span>
     </p>
   </div>
 </li>

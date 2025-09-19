@@ -1,8 +1,10 @@
-<h1>{{title()}}</h1>
-<ul class="card list-container bg-accent">
-  @for (item of list().items; track $index) {
-    @if (item?.type && item.type === 'track') {
-      <app-track-item [track]="item"></app-track-item>
-    }
-  }
-</ul>
+@for (item of list(); track $index) {
+  <ul class="card list-container bg-accent">
+    <app-track-item [track]="item"></app-track-item>
+  </ul>
+
+} @empty {
+  <div class="no-results-found">
+    <p class="font-light">Nenhum resultado encontrado, tente novamente e o resultado será exibido aqui.</p>
+  </div>
+}

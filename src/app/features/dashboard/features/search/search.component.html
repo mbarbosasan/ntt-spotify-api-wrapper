@@ -4,32 +4,41 @@
   </h1>
   <form [formGroup]="form" (ngSubmit)="triggerSearch.next(null)" class="form">
     <div class="input-search-group">
-      <input type="text" class="input" id="search" placeholder='Tente "Arctic Monkeys"' formControlName="search" />
-      <button class="button">Buscar</button>
+      <app-input type="text" inputId="search" name="search" placeholder='Tente "IDLES"' formControlName="search" />
+      <app-button label="Buscar" variant="primary" type="submit" />
     </div>
+    @if (form.controls["search"].touched && form.controls['search'].errors) {
+      @if (form.controls["search"].getError('required')) {
+        <p class="text-error text-sm">Campo de pesquisa não pode estar vazio.</p>
+      } @else if (form.controls["search"].getError('minlength')) {
+        <p class="text-error text-sm">A pesquisa precisa ser maior que dois caracteres.</p>
+      }
+    }
     <section class="type-search-group">
-      <ng-container *ngFor="let control of typesFormArray.controls; let i = index" formGroupName="types">
-        <label [for]="control.value">
-          <input
-            type="checkbox"
-            [id]="control.value"
-            [attr.label]="'Buscar por ' + control.value"
-            [value]="control.value"
-            class="checkbox"
-            [formArrayName]="i"
-          />
-          {{control.value }}
-        </label>
-      </ng-container>
+      @for (control of typesFormArray.controls; track $index) {
+        <ng-container formArrayName="types">
+          <label [for]="control.value.type">
+            <ng-container [formGroupName]="$index">
+              <input
+                type="checkbox"
+                [id]="control.value.type"
+                [attr.label]="'Buscar por ' + control.value.type"
+                class="checkbox"
+                formControlName="checked"
+              />
+            </ng-container>
+            {{control.value.type }}
+          </label>
+        </ng-container>
+      }
     </section>
   </form>
 </div>
-<ng-container *ngIf="(results$ | async) as results">
-  <section *ngFor="let entry of results | keyvalue">
-  @if (entry.value) {
-    <app-list [title]="entry.key" [list]="entry.value!"></app-list>
-  } @else {
-    <p>Nenhum resultado para {{entry.key}}</p>
-  }
-  </section>
-</ng-container>
+
+@if (!searchResult()) {
+  <div class="no-search-container">
+    <p class="font-light">Faça uma pesquisa e o resultado será exibido aqui.</p>
+  </div>
+} @else {
+  <app-list [list]="searchResult() || []"></app-list>
+}
