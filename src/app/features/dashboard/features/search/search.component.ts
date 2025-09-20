@@ -3,6 +3,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   inject,
+  OnInit,
   signal,
 } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
@@ -11,7 +12,8 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { filter, Subject, switchMap, tap, throttleTime } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
+import { filter, first, Subject, switchMap, tap, throttleTime } from 'rxjs';
 import { ButtonComponent } from 'src/app/core/ui/button/button.component';
 import { InputComponent } from 'src/app/core/ui/input/input.component';
 import { SearchResultComponent } from './components/search-result/search-result.component';
@@ -32,9 +34,11 @@ import { SearchType } from './types/search.model';
   styleUrl: './search.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SearchComponent {
+export class SearchComponent implements OnInit {
   private readonly searchService = inject(SearchService);
   private readonly fb = inject(NonNullableFormBuilder);
+  private readonly router = inject(Router);
+  private readonly activatedRoute = inject(ActivatedRoute);
 
   form = this.fb.group({
     types: this.fb.array([
@@ -88,9 +92,44 @@ export class SearchComponent {
           this.limit(),
           this.offset()
         );
-      })
+      }),
+        tap(() => {
+          const { search, types } = this.form.getRawValue();
+          const typesSelected = types
+            .filter((t) => t.checked)
+            .map((t) => t.type);
+          this.router.navigate([], {
+            queryParams: {
+              search,
+              types: typesSelected.join(','),
+              limit: this.limit(),
+              offset: this.offset(),
+            },
+          });
+        })
     )
   );
+
+  ngOnInit(): void {
+    this.activatedRoute.queryParamMap
+      .pipe(
+        tap(console.log),
+        first(),
+        tap((queryParams) => {
+          this.form.patchValue({
+            ...this.form,
+            search: queryParams.get('search') || '',
+            types: this.form.controls['types'].value.map((value) => ({
+              ...value,
+              checked: queryParams.get('types')?.includes(value.type) || false,
+            })),
+          });
+          this.limit.set(queryParams.get('limit') || 10);
+          this.offset.set(queryParams.get('offset') || 0);
+        })
+      )
+      .subscribe(() => this.triggerSearch.next(null));
+  }
 
   pageChanged({ limit, offset }: { limit: number; offset: number }) {
     this.limit.set(limit);
