@@ -1,6 +1,6 @@
 import { Component, input } from '@angular/core';
-import { CommonItemSearch } from '../../types/search.model';
-import { SearchResultItemComponent } from '../search-result-item/search-result-item.component';
+import { SearchResultItemComponent } from 'src/app/features/dashboard/features/search/components/search-result-item/search-result-item.component';
+import { CommonItemSearch } from 'src/app/features/dashboard/features/search/types/search.model';
 
 @Component({
   selector: 'app-list',

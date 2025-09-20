@@ -1,6 +1,12 @@
 .main-dashboard-container {
   min-height: 100svh;
+  padding: 0 2rem;
+  align-self: center;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.main {
+  max-width: 1920px;
 }

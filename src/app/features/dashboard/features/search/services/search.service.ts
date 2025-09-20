@@ -1,12 +1,12 @@
 import { HttpClient } from "@angular/common/http";
 import { inject, Injectable } from "@angular/core";
 import { map } from 'rxjs';
-import { SPOTIFY_API_URL } from "../../../../../constants";
+import { SPOTIFY_API_URL } from 'src/app/constants';
 import {
   SearchResult,
   SearchType,
   toCommonItemSearch,
-} from '../types/search.model';
+} from 'src/app/features/dashboard/features/search/types/search.model';
 
 @Injectable({
   providedIn: 'root',

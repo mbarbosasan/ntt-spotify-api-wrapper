@@ -1,7 +1,7 @@
 import { Component, input, output } from '@angular/core';
-import { CommonItemSearchResult } from '../../types/search.model';
-import { PaginatorComponent } from "../paginator/paginator.component";
-import { SearchResultListComponent } from "../search-result-list/search-result-list.component";
+import { PaginatorComponent } from 'src/app/features/dashboard/features/search/components/paginator/paginator.component';
+import { SearchResultListComponent } from 'src/app/features/dashboard/features/search/components/search-result-list/search-result-list.component';
+import { CommonItemSearchResult } from 'src/app/features/dashboard/features/search/types/search.model';
 
 @Component({
   selector: 'app-result',

@@ -1,5 +1,5 @@
 import { Component, computed, input, output } from '@angular/core';
-import { ButtonComponent } from '../../../../../../core/ui/button/button.component';
+import { ButtonComponent } from 'src/app/core/ui/button/button.component';
 
 @Component({
   selector: 'app-paginator',

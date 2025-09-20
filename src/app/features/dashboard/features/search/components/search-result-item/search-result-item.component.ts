@@ -1,6 +1,6 @@
 import { NgOptimizedImage } from '@angular/common';
 import { Component, input } from '@angular/core';
-import { CommonItemSearch } from '../../types/search.model';
+import { CommonItemSearch } from 'src/app/features/dashboard/features/search/types/search.model';
 
 @Component({
   selector: 'app-track-item',

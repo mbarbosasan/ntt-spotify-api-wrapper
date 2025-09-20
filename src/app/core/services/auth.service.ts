@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { AuthToken } from '../domain/auth/auth-token.';
-import { CookieService } from './cookie.service';
+import { AuthToken } from 'src/app/core/domain/auth/auth-token.';
+import { CookieService } from 'src/app/core/services/cookie.service';
 
 @Injectable({
   providedIn: 'root',

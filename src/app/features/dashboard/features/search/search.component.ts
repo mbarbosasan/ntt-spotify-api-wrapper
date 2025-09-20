@@ -12,8 +12,8 @@ import {
   Validators,
 } from '@angular/forms';
 import { filter, Subject, switchMap, tap, throttleTime } from 'rxjs';
-import { ButtonComponent } from '../../../../core/ui/button/button.component';
-import { InputComponent } from '../../../../core/ui/input/input.component';
+import { ButtonComponent } from 'src/app/core/ui/button/button.component';
+import { InputComponent } from 'src/app/core/ui/input/input.component';
 import { SearchResultComponent } from './components/search-result/search-result.component';
 import { SearchService } from './services/search.service';
 import { SearchType } from './types/search.model';
@@ -78,7 +78,7 @@ export class SearchComponent {
       }),
       filter(() => this.form.valid),
       // Inserindo um tempo fixo para evitar que o usuário realize muitas requisições em um curto período de tempo e receba um rate limit;
-      throttleTime(1000),
+      throttleTime(1_000),
       switchMap(() => {
         const { search, types } = this.form.getRawValue();
         const type = types.filter((t) => t.checked).map((t) => t.type);
@@ -88,8 +88,7 @@ export class SearchComponent {
           this.limit(),
           this.offset()
         );
-      }),
-      tap(console.log)
+      })
     )
   );
 
