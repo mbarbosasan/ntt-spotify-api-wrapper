@@ -1,1 +1,1 @@
-<button [type]="type()" [class]="variant()">{{label()}}</button>
+<button [type]="type()" [class]="variant()" (click)="onClick.emit()">{{label()}}</button>

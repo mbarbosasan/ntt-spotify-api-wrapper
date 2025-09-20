@@ -1,0 +1,6 @@
+
+<section class="paginator-container">
+  @for (item of pages(); track $index) {
+    <app-button [label]="item" type="button" [variant]="item === actualPage() ? 'primary' : 'secondary'" (onClick)="onPageChange(item)"></app-button>
+  }
+</section>

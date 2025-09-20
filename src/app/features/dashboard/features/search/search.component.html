@@ -1,4 +1,4 @@
-<div class="search-container">
+<div class="search-container py-md">
   <h1 class="text-primary font-base">Busque por seus 
     <span class="font-bold"> artistas, músicas ou albuns preferidos!</span>
   </h1>
@@ -35,10 +35,10 @@
   </form>
 </div>
 
-@if (!searchResult()) {
+@if (searchResult()) {
+  <app-result [searchResult]="searchResult()!" (pageChanged)="pageChanged($event)"></app-result>
+} @else {
   <div class="no-search-container">
     <p class="font-light">Faça uma pesquisa e o resultado será exibido aqui.</p>
   </div>
-} @else {
-  <app-list [list]="searchResult() || []"></app-list>
 }

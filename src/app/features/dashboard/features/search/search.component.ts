@@ -1,5 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  signal,
+} from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import {
   NonNullableFormBuilder,
@@ -9,9 +14,9 @@ import {
 import { filter, Subject, switchMap, tap, throttleTime } from 'rxjs';
 import { ButtonComponent } from '../../../../core/ui/button/button.component';
 import { InputComponent } from '../../../../core/ui/input/input.component';
+import { SearchResultComponent } from './components/search-result/search-result.component';
 import { SearchService } from './services/search.service';
 import { SearchType } from './types/search.model';
-import { ListComponent } from './ui/list/list.component';
 
 @Component({
   selector: 'app-search',
@@ -19,9 +24,9 @@ import { ListComponent } from './ui/list/list.component';
   imports: [
     ReactiveFormsModule,
     CommonModule,
-    ListComponent,
     ButtonComponent,
     InputComponent,
+    SearchResultComponent,
   ],
   templateUrl: './search.component.html',
   styleUrl: './search.component.scss',
@@ -62,6 +67,8 @@ export class SearchComponent {
   });
 
   triggerSearch = new Subject();
+  limit = signal(10);
+  offset = signal(0);
   searchResult = toSignal(
     this.triggerSearch.pipe(
       tap(() => {
@@ -75,10 +82,22 @@ export class SearchComponent {
       switchMap(() => {
         const { search, types } = this.form.getRawValue();
         const type = types.filter((t) => t.checked).map((t) => t.type);
-        return this.searchService.search(search, type);
-      })
+        return this.searchService.search(
+          search,
+          type,
+          this.limit(),
+          this.offset()
+        );
+      }),
+      tap(console.log)
     )
   );
+
+  pageChanged({ limit, offset }: { limit: number; offset: number }) {
+    this.limit.set(limit);
+    this.offset.set(offset);
+    this.triggerSearch.next(null);
+  }
 
   get typesFormArray() {
     return this.form.controls.types;

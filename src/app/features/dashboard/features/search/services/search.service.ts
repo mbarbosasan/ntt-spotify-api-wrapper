@@ -13,16 +13,16 @@ import {
 })
 export class SearchService {
   private readonly http = inject(HttpClient);
-  search(query: string, types: SearchType[]) {
+  search(query: string, types: SearchType[], limit: number, offset: number) {
     return this.http
       .get<SearchResult>(`${SPOTIFY_API_URL}/search`, {
         params: {
           q: query,
           type: types.join(','),
-          limit: 10,
-          offset: 10,
+          limit,
+          offset,
         },
       })
-      .pipe(map((result) => toCommonItemSearch(result)));
+      .pipe(map((result) => toCommonItemSearch(result, limit, offset)));
   }
 }

@@ -177,80 +177,120 @@ export function isTracksSearchResult(result: any): result is TrackSearchResult {
   );
 }
 
-export function toCommonItemSearch(result: SearchResult): CommonItemSearch[] {
+export type CommonItemSearchResult = {
+  items: CommonItemSearch[];
+  metadata: {
+    total: number;
+    offset: number;
+    limit: number;
+  };
+};
+// FIXME: Provavelmente dá pra fazer isso de uma forma mais fácil com reduce, pretendo refatorar posteriormente.
+export function toCommonItemSearch(
+  result: SearchResult,
+  limit: number,
+  offset: number
+): CommonItemSearchResult {
   const items: CommonItemSearch[] = [];
+  // Como estamos agrupando todos os resultados, nós apenas capturamos o maior valor do total independente de qual tipo.
+  let total = 0;
 
   if (result.artists) {
     items.push(
-      ...result.artists.items.map((artist) => ({
-        name: artist.name,
-        image: artist.images[0],
-        author: artist.name,
-        id: artist.id,
-        type: 'artist' as SearchType,
-      }))
+      ...result.artists.items
+        .filter((artist) => artist)
+        .map((artist) => ({
+          name: artist.name,
+          image: artist.images[0],
+          author: artist.name,
+          id: artist.id,
+          type: 'artist' as SearchType,
+        }))
     );
+    total = result.artists.total > total ? result.artists.total : total;
   }
 
   if (result.albums) {
     items.push(
-      ...result.albums.items.map((album) => ({
-        name: album.name,
-        image: album.images[0],
-        author: album.artists.map((a) => a.name).join(', '),
-        id: album.id,
-        type: 'album' as SearchType,
-      }))
+      ...result.albums.items
+        .filter((albums) => albums)
+        .map((album) => ({
+          name: album.name,
+          image: album.images[0],
+          author: album.artists.map((a) => a.name).join(', '),
+          id: album.id,
+          type: 'album' as SearchType,
+        }))
     );
+    total = result.albums.total > total ? result.albums.total : total;
   }
 
   if (result.tracks) {
     items.push(
-      ...result.tracks.items.map((track) => ({
-        name: track.name,
-        image: track.album.images[0],
-        author: track.artists.map((a) => a.name).join(', '),
-        id: track.id,
-        type: 'track' as SearchType,
-      }))
+      ...result.tracks.items
+        .filter((track) => track)
+        .map((track) => ({
+          name: track.name,
+          image: track.album.images[0],
+          author: track.artists.map((a) => a.name).join(', '),
+          id: track.id,
+          type: 'track' as SearchType,
+        }))
     );
+    total = result.tracks.total > total ? result.tracks.total : total;
   }
 
   if (result.playlists) {
     items.push(
-      ...result.playlists.items.map((playlist) => ({
-        name: playlist.name,
-        image: playlist.images[0],
-        author: playlist.owner.display_name,
-        id: playlist.id,
-        type: 'playlist' as SearchType,
-      }))
+      ...result.playlists.items
+        .filter((playlist) => playlist)
+        .map((playlist) => ({
+          name: playlist.name,
+          image: playlist.images[0],
+          author: playlist.owner.display_name,
+          id: playlist.id,
+          type: 'playlist' as SearchType,
+        }))
     );
+    total = result.playlists.total > total ? result.playlists.total : total;
   }
 
   if (result.shows) {
     items.push(
-      ...result.shows.items.map((show) => ({
-        name: show.name,
-        image: show.images[0],
-        author: show.publisher,
-        id: show.id,
-        type: 'show' as SearchType,
-      }))
+      ...result.shows.items
+        .filter((show) => show)
+        .map((show) => ({
+          name: show.name,
+          image: show.images[0],
+          author: show.publisher,
+          id: show.id,
+          type: 'show' as SearchType,
+        }))
     );
+    total = result.shows.total > total ? result.shows?.total : total;
   }
 
   if (result.episodes) {
     items.push(
-      ...result.episodes.items.map((episode) => ({
-        name: episode.name,
-        image: episode.images[0],
-        author: episode.language,
-        id: episode.id,
-        type: 'episode' as SearchType,
-      }))
+      ...result.episodes.items
+        .filter((items) => items)
+        .map((episode) => ({
+          name: episode.name,
+          image: episode.images[0],
+          author: episode.language,
+          id: episode.id,
+          type: 'episode' as SearchType,
+        }))
     );
+    total = result.episodes.total > total ? result.episodes?.total : total;
   }
 
-  return items;
+  return {
+    items: items,
+    metadata: {
+      total,
+      offset,
+      limit,
+    },
+  };
 }

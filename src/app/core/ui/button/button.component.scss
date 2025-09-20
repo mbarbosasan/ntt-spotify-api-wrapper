@@ -24,13 +24,14 @@
 }
 
 .button {
-  @include button(); // Usa o mixin com a cor padrão
+  @include button(); 
 }
 
 .button-primary {
-  @include button(foundation.$color-primary); // Usa o mixin com a cor primária
+  @include button(foundation.$color-primary);
 }
 
 .button-secondary {
-  @include button(foundation.$color-secondary); // Usa o mixin com a cor secundária
+  @include button(foundation.$color-secondary);
+  color: foundation.$text-color
 }
