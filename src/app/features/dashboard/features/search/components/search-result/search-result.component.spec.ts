@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TrackItemComponent } from './track-item.component';
+import { SearchResultComponent } from './search-result.component';
 
-describe('TrackItemComponent', () => {
-  let component: TrackItemComponent;
-  let fixture: ComponentFixture<TrackItemComponent>;
+describe('ResultComponent', () => {
+  let component: SearchResultComponent;
+  let fixture: ComponentFixture<SearchResultComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TrackItemComponent]
+      imports: [SearchResultComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(TrackItemComponent);
+    fixture = TestBed.createComponent(SearchResultComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

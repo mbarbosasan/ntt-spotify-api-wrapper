@@ -1,7 +1,7 @@
 <li class="item-card">
   <div class="album-image">
     @if (track().image) {
-      <img [ngSrc]="track().image?.url || ''" [width]="track().image?.width || 60" [height]="track().image?.height || 60" />
+      <img [ngSrc]="track().image?.url || ''" [width]="60" [height]="60" />
     } @else {
       <img src="" alt="" width="60" height="60">
     }

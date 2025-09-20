@@ -1,0 +1,8 @@
+<p class="text-secondary text-center">Foram encontrados {{searchResult().metadata.total}} resultados.</p>
+<app-list [list]="searchResult().items || []"></app-list>
+<app-paginator 
+    [limit]="searchResult().metadata.limit"
+    [offset]="searchResult().metadata.offset"
+    [total]="searchResult().metadata.total"
+    (pageChanged)="pageChanged.emit($event)"
+  ></app-paginator>
