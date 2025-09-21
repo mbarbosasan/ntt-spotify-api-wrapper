@@ -70,7 +70,7 @@ export class SearchComponent implements OnInit {
     search: this.fb.control('', [Validators.required, Validators.minLength(2)]),
   });
 
-  triggerSearch = new Subject();
+  triggerSearch = new Subject<void>();
   limit = signal(10);
   offset = signal(0);
   searchResult = toSignal(
@@ -93,20 +93,18 @@ export class SearchComponent implements OnInit {
           this.offset()
         );
       }),
-        tap(() => {
-          const { search, types } = this.form.getRawValue();
-          const typesSelected = types
-            .filter((t) => t.checked)
-            .map((t) => t.type);
-          this.router.navigate([], {
-            queryParams: {
-              search,
-              types: typesSelected.join(','),
-              limit: this.limit(),
-              offset: this.offset(),
-            },
-          });
-        })
+      tap(() => {
+        const { search, types } = this.form.getRawValue();
+        const typesSelected = types.filter((t) => t.checked).map((t) => t.type);
+        this.router.navigate([], {
+          queryParams: {
+            search,
+            types: typesSelected.join(','),
+            limit: this.limit(),
+            offset: this.offset(),
+          },
+        });
+      })
     )
   );
 
@@ -121,20 +119,21 @@ export class SearchComponent implements OnInit {
             search: queryParams.get('search') || '',
             types: this.form.controls['types'].value.map((value) => ({
               ...value,
-              checked: queryParams.get('types')?.includes(value.type) || false,
+              checked:
+                queryParams.get('types')?.includes(value.type) || value.checked,
             })),
           });
           this.limit.set(queryParams.get('limit') || 10);
           this.offset.set(queryParams.get('offset') || 0);
         })
       )
-      .subscribe(() => this.triggerSearch.next(null));
+      .subscribe(() => this.triggerSearch.next());
   }
 
   pageChanged({ limit, offset }: { limit: number; offset: number }) {
     this.limit.set(limit);
     this.offset.set(offset);
-    this.triggerSearch.next(null);
+    this.triggerSearch.next();
   }
 
   get typesFormArray() {

@@ -1,4 +1,10 @@
-import { Component, computed, input, output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  input,
+  output,
+} from '@angular/core';
 import { ButtonComponent } from 'src/app/core/ui/button/button.component';
 
 @Component({
@@ -7,6 +13,7 @@ import { ButtonComponent } from 'src/app/core/ui/button/button.component';
   imports: [ButtonComponent],
   templateUrl: './paginator.component.html',
   styleUrl: './paginator.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PaginatorComponent {
   limit = input.required<number>();

@@ -2,7 +2,7 @@
   <h1 class="text-primary font-base">Busque por seus 
     <span class="font-bold"> artistas, músicas ou albuns preferidos!</span>
   </h1>
-  <form [formGroup]="form" (ngSubmit)="triggerSearch.next(null)" class="form">
+  <form [formGroup]="form" (ngSubmit)="triggerSearch.next()" class="form">
     <div class="input-search-group">
       <app-input type="text" inputId="search" name="search" placeholder='Tente "IDLES"' formControlName="search" />
       <app-button label="Buscar" variant="primary" type="submit" />
