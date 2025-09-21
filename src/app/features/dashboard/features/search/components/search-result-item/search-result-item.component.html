@@ -12,7 +12,10 @@
       <span>{{ searchResult().type }} • {{searchResult().author}}</span>
     </p>
   </div>
-  <div class="item-button-container">
-    <app-button label="Ver detalhes" type="button" variant="default" size="sm" (onClick)="navigateTo(searchResult())"></app-button>
-  </div>
+  <!-- Os outros casos não tem implementação e por isso não faz sentido exibir o botão. -->
+  @if (searchResult().type === 'artist' || searchResult().type === 'album') {
+    <div class="item-button-container">
+      <app-button label="Ver detalhes" type="button" variant="default" size="sm" (onClick)="navigateTo(searchResult())"></app-button>
+    </div>
+  }
 </li>
