@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { FormGroup, NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthToken } from 'src/app/core/domain/auth/auth-token.';
+import { AuthToken } from 'src/app/core/models/auth/auth-token.';
 import { AuthService } from 'src/app/core/services/auth.service';
-import { ButtonComponent } from 'src/app/core/ui/button/button.component';
-import { InputComponent } from 'src/app/core/ui/input/input.component';
+import { ButtonComponent } from 'src/app/shared/ui/button/button.component';
+import { InputComponent } from 'src/app/shared/ui/input/input.component';
 import { LoginService } from './services/login.service';
 import { LoginForm } from './types/login.model';
 

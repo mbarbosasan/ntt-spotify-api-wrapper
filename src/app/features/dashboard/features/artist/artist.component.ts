@@ -16,7 +16,7 @@ import {
   Subject,
   switchMap,
 } from 'rxjs';
-import { BadgeComponent } from 'src/app/core/ui/badge/badge.component';
+import { BadgeComponent } from 'src/app/shared/ui/badge/badge.component';
 import { PaginatorComponent } from '../search/components/paginator/paginator.component';
 import { AlbumItemComponent } from './components/album-item/album-item.component';
 import { TrackItemComponent } from './components/track-item/track-item.component';

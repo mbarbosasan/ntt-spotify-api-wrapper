@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { LoadingComponent } from './core/ui/loading/loading.component';
+import { LoadingComponent } from './shared/ui/loading/loading.component';
 
 @Component({
   selector: 'app-root',

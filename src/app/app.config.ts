@@ -3,11 +3,11 @@ import { APP_INITIALIZER, ApplicationConfig, inject } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
-import { AuthToken } from './core/domain/auth/auth-token.';
 import { authInterceptor } from './core/interceptors/auth.interceptor';
 import { loadingInterceptor } from './core/interceptors/loading.interceptor';
+import { AuthToken } from './core/models/auth/auth-token.';
 import { AuthService } from './core/services/auth.service';
-import { CookieService } from './core/services/cookie.service';
+import { CookieService } from './shared/services/cookie.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [

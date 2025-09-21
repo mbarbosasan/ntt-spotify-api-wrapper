@@ -5,7 +5,7 @@ import {
   input,
   output,
 } from '@angular/core';
-import { ButtonComponent } from 'src/app/core/ui/button/button.component';
+import { ButtonComponent } from 'src/app/shared/ui/button/button.component';
 
 @Component({
   selector: 'app-paginator',

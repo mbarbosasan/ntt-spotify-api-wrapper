@@ -6,8 +6,8 @@ import {
   input,
 } from '@angular/core';
 import { Router } from '@angular/router';
-import { ButtonComponent } from 'src/app/core/ui/button/button.component';
 import { CommonItemSearch } from 'src/app/features/dashboard/features/search/types/search.model';
+import { ButtonComponent } from 'src/app/shared/ui/button/button.component';
 
 @Component({
   selector: 'app-search-result-item',

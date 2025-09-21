@@ -2,7 +2,7 @@ import { HttpInterceptorFn } from '@angular/common/http';
 import { inject } from '@angular/core';
 import { first, map, switchMap } from 'rxjs';
 import { SPOTIFY_API_URL } from 'src/app/constants';
-import { AuthToken } from 'src/app/core/domain/auth/auth-token.';
+import { AuthToken } from 'src/app/core/models/auth/auth-token.';
 import { AuthService } from 'src/app/core/services/auth.service';
 
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
