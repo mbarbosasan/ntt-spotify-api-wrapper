@@ -1,4 +1,7 @@
 <li class="album-container">
   <img [ngSrc]="albumCover().url" height="200" width="200" />
-  <p class="text-primary font-bold">{{album().name}}</p>
+  <div class="album-name-container">
+    <p class="font-base text-center">({{releaseDateFormatted()}})</p>
+    <p class="text-primary font-bold text-sm">{{album().name}}</p>
+  </div>
 </li>

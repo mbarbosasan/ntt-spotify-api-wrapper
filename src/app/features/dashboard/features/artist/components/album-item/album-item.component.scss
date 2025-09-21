@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 8px;
 }
 
 .album-container img {
@@ -13,9 +14,10 @@
   }
 }
 
-.album-container p {
+.album-name-container {
   height: 3rem;
-  width: 100%;
-  text-align: start;
-  text-wrap: balance;
+  width: 200px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }

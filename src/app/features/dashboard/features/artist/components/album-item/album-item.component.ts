@@ -7,9 +7,14 @@ import { Album } from 'src/app/features/dashboard/features/artist/types/artist.m
   standalone: true,
   imports: [NgOptimizedImage],
   templateUrl: './album-item.component.html',
-  styleUrl: './album-item.component.scss'
+  styleUrl: './album-item.component.scss',
 })
 export class AlbumItemComponent {
-  album = input.required<Album>()
-  albumCover = computed(() => this.album().images[0])
+  album = input.required<Album>();
+  albumCover = computed(() => this.album().images[0]);
+  releaseDateFormatted = computed(() =>
+    new Intl.DateTimeFormat('pt-br', {
+      year: 'numeric',
+    }).format(new Date(this.album().release_date))
+  );
 }

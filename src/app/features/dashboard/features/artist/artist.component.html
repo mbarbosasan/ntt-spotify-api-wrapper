@@ -10,10 +10,15 @@
   </ul>
   <div class="artist-albums-container">
     <p class="text-xl font-extrabold">Albums</p>
+    @if (albums()) {
     <ul class="artist-albums">
       @for (album of albums()?.items; track $index) {
         <app-album-item [album]="album"></app-album-item>
       }
     </ul>
+      <app-paginator [limit]="albums()!.limit" [offset]="albums()!.offset" [total]="albums()!.total" (pageChanged)="onPageChange($event)" />
+    } @else {
+      <p>Nenhum álbum foi encontrado.</p>
+    }
   </div>
 </section>
