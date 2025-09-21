@@ -1,0 +1,18 @@
+<ul class="breadcrumb-container">
+  @for (item of breadcrumb(); track $index; let last = $last) {
+    <li>
+      @if (item.link) {
+        <a [routerLink]="item.link" class="text-base">{{item.name}}</a>
+      } @else {
+        @if (last) {
+          <p class="font-bold"> {{item.name}}</p>
+        } @else {
+          <p>{{item.name}}</p>
+        }
+      }
+    </li>
+    @if (!last) {
+      <p class="chevron">></p>
+    }
+  }
+</ul>

@@ -4,6 +4,7 @@ import {
   Component,
   computed,
   inject,
+  Signal,
   signal,
 } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
@@ -17,7 +18,9 @@ import {
   switchMap,
 } from 'rxjs';
 import { BadgeComponent } from 'src/app/shared/ui/badge/badge.component';
-import { PaginatorComponent } from '../search/components/paginator/paginator.component';
+import { BreadcrumbComponent } from 'src/app/shared/ui/breadcrumb/breadcrumb.component';
+import { BreadcrumbItem } from 'src/app/shared/ui/breadcrumb/types/breadcrumb.model';
+import { PaginatorComponent } from '../../../../shared/ui/paginator/paginator.component';
 import { AlbumItemComponent } from './components/album-item/album-item.component';
 import { TrackItemComponent } from './components/track-item/track-item.component';
 import { ArtistService } from './services/artist.service';
@@ -31,6 +34,7 @@ import { ArtistService } from './services/artist.service';
     PaginatorComponent,
     BadgeComponent,
     DecimalPipe,
+    BreadcrumbComponent,
   ],
   templateUrl: './artist.component.html',
   styleUrl: './artist.component.scss',
@@ -42,6 +46,18 @@ export class ArtistComponent {
 
   offset = signal(0);
   limit = signal(6);
+  breadcrumb: Signal<BreadcrumbItem[]> = computed(() => {
+    if (!this.artist()) return [];
+    return [
+      {
+        name: 'Search',
+        link: '/',
+      },
+      {
+        name: this.artist()!.name,
+      },
+    ];
+  });
 
   albumsPageChanged = new Subject<{ limit: number; offset: number }>();
 

@@ -1,4 +1,5 @@
 <section class="card artist-container">
+  <app-breadcrumb [breadcrumb]="breadcrumb()"></app-breadcrumb>
   <div class="artist-header" [style.backgroundImage]="'url(' + artistCover()!.url + ')'" [style.width]="artistCover()?.width" [style.height]="artistCover()?.height">
     <div class="artist-title-container">
       <p class="artist-name text-xl">{{artist()?.name}}</p>

@@ -127,7 +127,11 @@ export class SearchComponent implements OnInit {
           this.offset.set(queryParams.get('offset') || 0);
         })
       )
-      .subscribe(() => this.triggerSearch.next());
+      .subscribe(() => {
+        this.triggerSearch.next();
+        this.form.markAsPristine();
+        this.form.markAsUntouched();
+      });
   }
 
   pageChanged({ limit, offset }: { limit: number; offset: number }) {

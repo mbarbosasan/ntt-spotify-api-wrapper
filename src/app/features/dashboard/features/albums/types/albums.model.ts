@@ -21,10 +21,11 @@ export type Album = {
   name: string;
   release_date: string;
   artists: {
+    id: string;
     name: string;
-    type: 'artist'
-  },
+    type: 'artist';
+  }[];
   tracks: {
-    items: Track[]
-  }
-}
+    items: Track[];
+  };
+};

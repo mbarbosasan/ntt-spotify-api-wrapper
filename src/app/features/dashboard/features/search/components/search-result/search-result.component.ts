@@ -4,9 +4,9 @@ import {
   input,
   output,
 } from '@angular/core';
-import { PaginatorComponent } from 'src/app/features/dashboard/features/search/components/paginator/paginator.component';
 import { SearchResultListComponent } from 'src/app/features/dashboard/features/search/components/search-result-list/search-result-list.component';
 import { CommonItemSearchResult } from 'src/app/features/dashboard/features/search/types/search.model';
+import { PaginatorComponent } from 'src/app/shared/ui/paginator/paginator.component';
 
 @Component({
   selector: 'app-search-result',

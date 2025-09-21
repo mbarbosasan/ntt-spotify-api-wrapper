@@ -1,4 +1,5 @@
 <section class="card album-container">
+  <app-breadcrumb [breadcrumb]="breadcrumb()"></app-breadcrumb>
   <div class="album-info">
     <p class="font-bold text-primary text-2xl">{{album()?.name}}</p>
     @if (albumCover()) {

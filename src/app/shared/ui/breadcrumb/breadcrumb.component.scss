@@ -1,0 +1,30 @@
+@use 'src/styles/foundations.scss' as foundation;
+
+.breadcrumb-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 1rem 0;
+  color: foundation.$color-accent;
+
+  .chevron {
+    font-weight: foundation.$font-weight-light;
+    color: foundation.$text-color;
+  }
+
+  li:hover {
+    color: rgb(foundation.$color-accent, 0.7)
+  }
+
+  a:hover {
+    color: rgb(foundation.$color-accent, 0.7)
+  }
+
+  a,
+  a:visited,
+  a:focus,
+  a:active {
+    color: foundation.$color-accent;
+    text-decoration: none;
+  }
+}
