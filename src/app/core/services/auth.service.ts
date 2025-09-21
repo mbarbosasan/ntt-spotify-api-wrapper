@@ -13,6 +13,7 @@ export class AuthService {
 
   updateToken(token: AuthToken) {
     this.token.next(token);
+    if (this.cookieService.get('Authorization')) return;
     this.cookieService.set(
       'Authorization',
       JSON.stringify(token),
