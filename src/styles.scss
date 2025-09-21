@@ -1,3 +1,8 @@
 @use "./styles/foundations.scss";
 @use "./styles/checkbox.scss";
 @use "./styles/utilities.scss";
+
+@font-face {
+  font-family: 'Inter';
+  src: url(./assets/Inter-VariableFont_opsz\,wght.ttf);
+}
