@@ -1,3 +1,4 @@
+@use 'src/styles/foundations.scss' as foundation;
 
 .container {
   width: 100svw;
@@ -12,7 +13,6 @@
   }
 
   .form {
-    width: 40svw;
     padding: 2rem;
     max-width: 600px;
     min-width: 300px;
@@ -20,5 +20,9 @@
     flex-direction: column;
     justify-content: center;
     gap: 12px;
+  }
+
+  a {
+    color: foundation.$color-accent;
   }
 }

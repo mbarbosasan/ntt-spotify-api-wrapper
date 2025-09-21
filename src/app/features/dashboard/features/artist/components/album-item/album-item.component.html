@@ -1,7 +1,9 @@
 <li class="album-container">
-  <img [ngSrc]="albumCover().url" height="200" width="200" />
-  <div class="album-name-container">
-    <p class="font-base text-center">({{releaseDateFormatted()}})</p>
-    <p class="text-primary font-bold text-sm">{{album().name}}</p>
-  </div>
+  <a [routerLink]="['/dashboard/album/' + album().id]">
+    <img [ngSrc]="albumCover().url" height="200" width="200" />
+    <div class="album-name-container">
+      <p class="text-primary font-base text-center">({{releaseDateFormatted()}})</p>
+      <p class="text-primary font-bold text-sm">{{album().name}}</p>
+    </div>
+  </a>
 </li>

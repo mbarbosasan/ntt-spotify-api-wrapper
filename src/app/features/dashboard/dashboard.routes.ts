@@ -20,6 +20,13 @@ export const DASHBOARD_ROUTES: Routes = [
             (c) => c.ArtistComponent
           ),
       },
+      {
+        path: 'album/:id',
+        loadComponent: () =>
+          import('./features/albums/albums.component').then(
+            (c) => c.AlbumsComponent
+          ),
+      },
     ],
   },
 ];

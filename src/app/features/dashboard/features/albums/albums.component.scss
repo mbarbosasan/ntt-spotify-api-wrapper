@@ -1,0 +1,25 @@
+.album-container {
+  width: 100svw;
+  max-width: 1200px;
+  min-width: 300px;
+  padding: 2rem;
+  margin: 2rem;
+}
+
+.album-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+
+
+
+@media (max-width: 600px) {
+  .album-container {
+    padding: 10px;
+    margin: 0rem;
+  }
+}

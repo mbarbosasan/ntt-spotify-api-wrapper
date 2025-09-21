@@ -1,0 +1,17 @@
+<section class="card album-container">
+  <div class="album-info">
+    <p class="font-bold text-primary text-2xl">{{album()?.name}}</p>
+    @if (albumCover()) {
+      <img [ngSrc]="albumCover()!" height="300" width="300" priority />
+    } @else {
+      <img src="''" width="300" height="300" />
+    }
+    <p class="font-base text-primary text-sm">({{albumReleaseDateFormatted()}})</p>
+  </div>
+  <div class="album-tracks">
+    <p class="font-bold text-primary text-xl">Tracks</p>
+    @for (track of album()?.tracks?.items; track $index) {
+      <app-album-track-item [track]="track"></app-album-track-item>
+    }
+  </div>
+</section>

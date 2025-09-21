@@ -1,13 +1,20 @@
 import { NgOptimizedImage } from "@angular/common";
-import { Component, computed, input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  input,
+} from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { Album } from 'src/app/features/dashboard/features/artist/types/artist.model';
 
 @Component({
   selector: 'app-album-item',
   standalone: true,
-  imports: [NgOptimizedImage],
+  imports: [NgOptimizedImage, RouterLink],
   templateUrl: './album-item.component.html',
   styleUrl: './album-item.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AlbumItemComponent {
   album = input.required<Album>();
