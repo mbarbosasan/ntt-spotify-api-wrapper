@@ -1,5 +1,15 @@
-import { Component, forwardRef, input, signal } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  input,
+  signal,
+} from '@angular/core';
+import {
+  ControlValueAccessor,
+  NG_VALUE_ACCESSOR,
+  ReactiveFormsModule,
+} from '@angular/forms';
 
 type inputType = 'text' | 'password';
 
@@ -13,9 +23,10 @@ type inputType = 'text' | 'password';
     {
       provide: NG_VALUE_ACCESSOR,
       multi: true,
-      useExisting: forwardRef(() => InputComponent)
-    }
+      useExisting: forwardRef(() => InputComponent),
+    },
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InputComponent implements ControlValueAccessor {
   type = input.required<inputType>();
@@ -43,7 +54,7 @@ export class InputComponent implements ControlValueAccessor {
     this.disabled.set(isDisabled);
   }
 
-    onInputChange(event: Event): void {
+  onInputChange(event: Event): void {
     const value = (event.target as HTMLInputElement).value;
     this.value.set(value);
     this.onChange(value);

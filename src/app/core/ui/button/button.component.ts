@@ -1,4 +1,10 @@
-import { Component, computed, input, output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  input,
+  output,
+} from '@angular/core';
 
 type variant = 'primary' | 'secondary' | 'default';
 type size = 'sm' | 'md' | 'lg';
@@ -9,6 +15,7 @@ type size = 'sm' | 'md' | 'lg';
   imports: [],
   templateUrl: './button.component.html',
   styleUrl: './button.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ButtonComponent {
   type = input('button');
