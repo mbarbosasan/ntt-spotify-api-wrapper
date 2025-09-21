@@ -5,13 +5,14 @@ import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { AuthToken } from './core/domain/auth/auth-token.';
 import { authInterceptor } from './core/interceptors/auth.interceptor';
+import { loadingInterceptor } from './core/interceptors/loading.interceptor';
 import { AuthService } from './core/services/auth.service';
 import { CookieService } from './core/services/cookie.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
-    provideHttpClient(withInterceptors([authInterceptor])),
+    provideHttpClient(withInterceptors([authInterceptor, loadingInterceptor])),
     {
       provide: APP_INITIALIZER,
       useFactory: () => {

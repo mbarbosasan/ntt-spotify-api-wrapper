@@ -1,0 +1,9 @@
+.loading-container {
+  height: 100svh;
+  width: 100svw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  backdrop-filter: blur(10px);
+}
