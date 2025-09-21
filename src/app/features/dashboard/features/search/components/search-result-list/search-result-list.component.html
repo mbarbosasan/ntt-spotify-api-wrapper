@@ -1,6 +1,6 @@
-@for (item of list(); track $index) {
+@for (item of list(); track item.id) {
   <ul class="card list-container bg-accent">
-    <app-track-item [track]="item"></app-track-item>
+    <app-search-result-item [searchResult]="item"></app-search-result-item>
   </ul>
 
 } @empty {

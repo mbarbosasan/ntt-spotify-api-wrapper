@@ -1,15 +1,18 @@
 <li class="item-card">
   <div class="album-image">
-    @if (track().image) {
-      <img [ngSrc]="track().image?.url || ''" [width]="60" [height]="60" />
+    @if (searchResult().image?.url) {
+      <img [ngSrc]="searchResult().image!.url" [width]="60" [height]="60" />
     } @else {
       <img src="" alt="" width="60" height="60">
     }
   </div>
   <div>
-    <p class="font-bold">{{ track().name}}</p>
+    <p class="font-bold">{{ searchResult().name}}</p>
     <p>
-      <span>{{ track().type }} • {{track().author}}</span>
+      <span>{{ searchResult().type }} • {{searchResult().author}}</span>
     </p>
+  </div>
+  <div class="item-button-container">
+    <app-button label="Ver detalhes" type="button" variant="default" size="sm" (onClick)="navigateTo(searchResult())"></app-button>
   </div>
 </li>

@@ -35,3 +35,23 @@
   @include button(foundation.$color-secondary);
   color: foundation.$text-color
 }
+
+.button-default {
+  @include button(foundation.$color-base);
+  color: foundation.$text-color;
+}
+
+.button-sm {
+  padding: foundation.$spacing-sm;
+  font-size: foundation.$font-size-sm;
+}
+
+.button-md {
+  padding: foundation.$spacing-md;
+  font-size: foundation.$font-size-base;
+}
+
+.button-lg {
+  padding: foundation.$spacing-lg;
+  font-size: foundation.$font-size-lg;
+}

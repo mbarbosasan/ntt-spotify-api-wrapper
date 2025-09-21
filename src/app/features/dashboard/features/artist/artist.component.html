@@ -1,0 +1,19 @@
+<section class="card artist-container">
+  <div class="artist-header artist-cover" [style.backgroundImage]="'url(' + artistCover()!.url + ')'" [style.width]="artistCover()?.width" [style.height]="artistCover()?.height">
+    <p class="artist-title text-xl">{{artist()?.name}}</p>
+  </div>
+  <ul class="artist-top-tracks">
+    <p class="text-xl font-extrabold">Top Tracks</p>
+    @for (track of tracks(); track $index) {
+      <app-track-item [track]="track"></app-track-item>
+    }
+  </ul>
+  <div class="artist-albums-container">
+    <p class="text-xl font-extrabold">Albums</p>
+    <ul class="artist-albums">
+      @for (album of albums()?.items; track $index) {
+        <app-album-item [album]="album"></app-album-item>
+      }
+    </ul>
+  </div>
+</section>

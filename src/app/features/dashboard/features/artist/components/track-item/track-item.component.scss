@@ -1,0 +1,17 @@
+@use 'src/styles/foundations.scss' as foundation;
+
+.track-container {
+  height: 64px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: background-color .3s ease-in;
+  transition: transform .1s ease-in;
+  cursor: pointer;
+  
+  &:hover {
+    background-color: #717171;
+    transform: scale(1.2);
+    color: white;
+  }
+}

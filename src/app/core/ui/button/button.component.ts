@@ -1,6 +1,7 @@
-import { Component, input, output } from '@angular/core';
+import { Component, computed, input, output } from '@angular/core';
 
-type variant = 'primary' | 'secondary';
+type variant = 'primary' | 'secondary' | 'default';
+type size = 'sm' | 'md' | 'lg';
 
 @Component({
   selector: 'app-button',
@@ -15,5 +16,9 @@ export class ButtonComponent {
   variant = input('button-primary', {
     transform: (value: variant) => `button-${value}`,
   });
+  size = input('button-md', {
+    transform: (value: size) => `button-${value}`,
+  });
+  styleClass = computed(() => `${this.variant()} ${this.size()}`);
   onClick = output<void>();
 }

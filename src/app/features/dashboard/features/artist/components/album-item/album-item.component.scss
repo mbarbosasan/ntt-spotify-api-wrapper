@@ -1,0 +1,21 @@
+.album-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.album-container img {
+  transition: transform .2s ease-in;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.2);
+  }
+}
+
+.album-container p {
+  height: 3rem;
+  width: 100%;
+  text-align: start;
+  text-wrap: balance;
+}

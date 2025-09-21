@@ -9,7 +9,7 @@ import { SearchResultListComponent } from 'src/app/features/dashboard/features/s
 import { CommonItemSearchResult } from 'src/app/features/dashboard/features/search/types/search.model';
 
 @Component({
-  selector: 'app-result',
+  selector: 'app-search-result',
   standalone: true,
   imports: [SearchResultListComponent, PaginatorComponent],
   templateUrl: './search-result.component.html',

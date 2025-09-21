@@ -36,7 +36,7 @@
 </div>
 
 @if (searchResult()) {
-  <app-result [searchResult]="searchResult()!" (pageChanged)="pageChanged($event)"></app-result>
+  <app-search-result [searchResult]="searchResult()!" (pageChanged)="pageChanged($event)"></app-search-result>
 } @else {
   <div class="no-search-container">
     <p class="font-light">Faça uma pesquisa e o resultado será exibido aqui.</p>

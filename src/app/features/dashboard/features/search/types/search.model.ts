@@ -16,7 +16,7 @@ export type BaseSearchResult<T> = {
   items: Array<T>;
 };
 
-type ImageObject = {
+export type ImageObject = {
   url: string;
   height: string | null;
   width: string | null;

@@ -10,7 +10,14 @@ export const DASHBOARD_ROUTES: Routes = [
         path: '',
         loadComponent: () =>
           import('./features/search/search.component').then(
-            (m) => m.SearchComponent
+            (c) => c.SearchComponent
+          ),
+      },
+      {
+        path: 'artist/:id',
+        loadComponent: () =>
+          import('./features/artist/artist.component').then(
+            (c) => c.ArtistComponent
           ),
       },
     ],
