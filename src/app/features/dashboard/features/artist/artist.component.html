@@ -1,6 +1,16 @@
 <section class="card artist-container">
-  <div class="artist-header artist-cover" [style.backgroundImage]="'url(' + artistCover()!.url + ')'" [style.width]="artistCover()?.width" [style.height]="artistCover()?.height">
-    <p class="artist-title text-xl">{{artist()?.name}}</p>
+  <div class="artist-header" [style.backgroundImage]="'url(' + artistCover()!.url + ')'" [style.width]="artistCover()?.width" [style.height]="artistCover()?.height">
+    <div class="artist-title-container">
+      <p class="artist-name text-xl">{{artist()?.name}}</p>
+      @if (artist()?.followers?.total) {
+        <p class="artist-followers">{{artist()!.followers!.total | number:'2.0'}} seguidores</p>
+      }
+    </div>
+  </div>
+  <div class="artist-genres">
+    @for (genre of artist()?.genres; track $index) {
+      <app-badge [name]="genre"></app-badge>
+    }
   </div>
   <ul class="artist-top-tracks">
     <p class="text-xl font-extrabold">Top Tracks</p>

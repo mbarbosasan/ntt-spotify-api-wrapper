@@ -1,3 +1,4 @@
+import { DecimalPipe } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -15,6 +16,7 @@ import {
   Subject,
   switchMap,
 } from 'rxjs';
+import { BadgeComponent } from 'src/app/core/ui/badge/badge.component';
 import { PaginatorComponent } from '../search/components/paginator/paginator.component';
 import { AlbumItemComponent } from './components/album-item/album-item.component';
 import { TrackItemComponent } from './components/track-item/track-item.component';
@@ -23,7 +25,13 @@ import { ArtistService } from './services/artist.service';
 @Component({
   selector: 'app-artist',
   standalone: true,
-  imports: [TrackItemComponent, AlbumItemComponent, PaginatorComponent],
+  imports: [
+    TrackItemComponent,
+    AlbumItemComponent,
+    PaginatorComponent,
+    BadgeComponent,
+    DecimalPipe,
+  ],
   templateUrl: './artist.component.html',
   styleUrl: './artist.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

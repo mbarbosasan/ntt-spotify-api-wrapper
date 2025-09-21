@@ -21,21 +21,25 @@
   height: 30%;
   min-height: 300px;
 
-  display: flex;
-  align-items: end;
-  padding: 1rem;
-}
-
-.artist-title {
-  font-size: 2rem;
-  font-weight: 900;
-  color: white;
-}
-
-.artist-cover {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+
+  display: flex;
+  align-items: end;
+  padding: 1rem;
+
+  .artist-name {
+    font-size: 2rem;
+    font-weight: 900;
+    color: white;
+  }
+
+  .artist-followers {
+    font-size: 1.2rem;
+    font-weight: 300;
+    color: white;
+  }
 }
 
 .artist-top-tracks {
@@ -58,4 +62,11 @@
   place-items: center;
   align-items: center;
   justify-content: center;
+}
+
+.artist-genres {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 1rem;
 }

@@ -1,0 +1,15 @@
+@use 'src/styles/foundations.scss' as foundation;
+
+.badge-container {
+  width: fit-content;
+  background-color: foundation.$color-accent;
+  border-radius: 16px;
+  padding: .5rem;
+  text-align: center;
+  color: #fff;
+}
+
+.badge-name {
+  font-size: foundation.$font-size-sm;
+  font-weight: foundation.$font-weight-light;
+}
