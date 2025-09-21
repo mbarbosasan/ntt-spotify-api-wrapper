@@ -1,0 +1,28 @@
+@use 'src/styles/foundations.scss' as foundation;
+
+.toast-container {
+  position: fixed;
+  background-color: foundation.$color-secondary;
+  top: 20px;
+  right: 20px;
+  width: 320px;
+   padding: 16px 24px;
+  opacity: 0;
+  box-shadow: foundation.$shadow-md;
+  animation: fadeInRight .5s ease-in-out forwards;
+}
+
+.toast-error {
+  border-left: 4px solid foundation.$color-error;
+}
+
+@keyframes fadeInRight  {
+  0% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

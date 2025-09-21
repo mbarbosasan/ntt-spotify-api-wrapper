@@ -1,0 +1,9 @@
+<ul>
+  @if (messages()) {
+    <div class="toast-container toast-error">
+      <p class="toast-title font-bold">{{messages()?.title}}</p>
+      <p class="text-primary">{{messages()?.message}}</p>
+    </div>
+  }
+</ul>
+

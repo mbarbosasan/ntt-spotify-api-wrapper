@@ -4,6 +4,7 @@ import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
 import { authInterceptor } from './core/interceptors/auth.interceptor';
+import { errorInterceptor } from './core/interceptors/error.interceptor';
 import { loadingInterceptor } from './core/interceptors/loading.interceptor';
 import { AuthToken } from './core/models/auth/auth-token.';
 import { AuthService } from './core/services/auth.service';
@@ -12,7 +13,9 @@ import { CookieService } from './shared/services/cookie.service';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
-    provideHttpClient(withInterceptors([authInterceptor, loadingInterceptor])),
+    provideHttpClient(
+      withInterceptors([authInterceptor, loadingInterceptor, errorInterceptor])
+    ),
     {
       provide: APP_INITIALIZER,
       useFactory: () => {
