@@ -1,4 +1,4 @@
-# NTT - Spotify Wrapper API
+# Spotify Wrapper API
 
 Projeto com a implementação do case técnico para o processo seletivo da NTT Data aonde foi utilizado a API do Spotify e implementado todo o fluxo de autenticação e consumo dos endpoints de `search`, `artists` e `albums` e a criação das respectivas interfaces.
 
